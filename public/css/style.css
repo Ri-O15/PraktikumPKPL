@@ -1,0 +1,15 @@
+.hidden {
+    display: none;
+}
+
+.visible-block {
+    display: block;
+}
+
+.visible-flex {
+    display: flex;
+}
+
+.visible-grid {
+    display: grid;
+}
