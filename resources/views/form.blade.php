@@ -17,7 +17,7 @@
             <div class="max-w-8xl w-full rounded overflow-hidden shadow-lg bg-white">
                 <div class="px-2 pt-4 pb-2">
                     <a href="{{ url()->previous() }}"
-                        class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+                        class="bg-green-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
                         Back
                     </a>
                 </div>
@@ -29,20 +29,22 @@
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">{{ $product['name'] }}</div>
                     <p class="text-gray-700 text-base mb-2 uppercase">
-                        Kota    : {{ $city }}
+                        Kota : {{ $city }}
                     </p>
                     <p class="text-gray-700 text-base mb-2">
-                        Harga   : {{ $product['price'] }}
+                        Harga : {{ $product['price'] }}
                     </p>
                 </div>
-                
+
                 <div class="px-6 py-4">
                     <h2 class="font-bold text-lg mb-4">Masukkan Data Diri Anda</h2>
-                    
-                    <div id="alert-box" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" style="display: none;">
+
+                    <div id="alert-box"
+                        class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
+                        style="display: none;">
                         <span class="block sm:inline">Your form has been submitted successfully!</span>
                     </div>
-                    
+
                     <form id="submit-form">
                         <input type="hidden" name="Produk" value="{{ $product['name'] }}" required>
                         <input type="hidden" id="kota" name="Kota" value="{{ $city }}" required>
@@ -54,8 +56,8 @@
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                            <input type="email" id="email" name="Email"
-                                class="form-input mt-1 block w-full" placeholder="email" required>
+                            <input type="email" id="email" name="Email" class="form-input mt-1 block w-full"
+                                placeholder="email" required>
                         </div>
                         <div class="mb-4">
                             <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
@@ -63,7 +65,7 @@
                         </div>
 
                         <button id="submit-button" type="submit"
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             Submit
                         </button>
                     </form>

@@ -44,7 +44,7 @@
                             id="menu-item-1">Price: High to Low</a>
     
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
     </div>

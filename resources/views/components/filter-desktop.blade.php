@@ -140,4 +140,5 @@
             </div>
         </div>
     </div>
+    <button><a href="/index/logout" class="text-gray-800 hover:text-indigo-700 font-bold text-xl">Logout</a></button>
 </form>
