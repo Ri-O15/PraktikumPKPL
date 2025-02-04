@@ -30,10 +30,8 @@ class SessionController extends Controller
         ];
 
         if(Auth::attempt($infologin)){
-            // return 'sukses';
             return redirect('malang')->with('success', 'Berhasil');
         }else{
-            // return 'gagal';
             return redirect('index')->withErrors('Email/Password tidak valid');
         }
     }
@@ -60,7 +58,8 @@ class SessionController extends Controller
             'email.email' => 'Silahkan masukkan email yang valid',
             'email.unique' => 'Email sudah ada',
             'password.required' => 'Password wajib diisi',
-            'password.min' => 'Minimum 6 karakter'
+            'password.min' => 'Minimum 6 karakter',
+
         ]);
 
         $data = [
@@ -77,11 +76,7 @@ class SessionController extends Controller
         ];
 
         if(Auth::attempt($infologin)){
-            // return 'sukses';
-            return redirect('index')->withSuccess('Registrasi berhasil. Selamat datang, '.Auth::user()->name.'!');
-        }else{
-            // return 'gagal';
-            return redirect('index')->withErrors('Email/Password tidak valid');
+            return redirect('index');
         }
     }
 }

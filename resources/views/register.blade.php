@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Register</title>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <!-- SweetAlert2 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 </head>
 
@@ -20,32 +19,36 @@
     <div class="w-50 max-w-sm bg-white rounded-lg shadow-lg p-6">
         <h1 class="text-2xl font-semibold text-center mb-6">Register</h1>
         @if ($errors->any())
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                Swal.fire({
-                    title: 'Ada kesalahan!',
-                    html: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: 'Ada kesalahan!',
+                        html: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
                 });
-            });
-        </script>
-    @endif
-    
-    @if(session('success'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Success alert is triggered'); // Debugging
+            </script>
+        @endif
 
-            Swal.fire({
-                title: 'Registrasi Berhasil!',
-                text: {!! json_encode(session('success')) !!},
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-        });
-    </script>
-@endif
+        @if (session('success'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+
+                    console.log('Success alert is triggered'); // Debugging
+
+                    Swal.fire({
+                        title: 'Registrasi Berhasil!',
+                        text: {!! json_encode(session('success')) !!},
+                        // Swal.fire({
+                        //     title: 'Registrasi Berhasil!',
+                        //     text: "{{ session('success') }}",
+                        //     icon: 'success',
+                        //     confirmButtonText: 'OK'
+                    });
+                });
+            </script>
+        @endif
 
         <form action="/index/create" method="POST" class="space-y-4">
             @csrf

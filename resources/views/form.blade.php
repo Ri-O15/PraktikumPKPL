@@ -8,15 +8,31 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>Document</title>
 </head>
 
 <body class="bg-gray-100">
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+    @if ($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let errorMessages = '<ul>';
+                @foreach ($errors->all() as $error)
+                    errorMessages += '<li>{{ $error }}</li>';
+                @endforeach
+                errorMessages += '</ul>';
+
+                Swal.fire({
+                    title: 'Ada kesalahan!',
+                    html: errorMessages,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
+
 
     <div class="container mx-auto px-4 mt-10">
         <div class="flex justify-center">
@@ -53,29 +69,31 @@
 
                     <form id="submit-form" action="{{ route('save-data') }}" method="post">
                         {{ csrf_field() }}
-                        <input type="hidden" name="Produk" value="{{ $product['name'] }}" required>
-                        <input type="hidden" id="kota" name="Kota" value="{{ $city }}" required>
-                        <input type="hidden" name="Harga" value="{{ $product['price'] }}" required>
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                            <input type="text" id="name" name="Nama" class="form-input mt-1 block w-full"
-                                placeholder="name" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                            <input type="email" id="email" name="Email" class="form-input mt-1 block w-full"
-                                placeholder="email" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
-                            <textarea id="message" name="Message" rows="4" class="form-textarea mt-1 block w-full" placeholder="message"></textarea>
-                        </div>
 
-                        <button id="submit-button" type="submit"
-                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                            Submit
-                        </button>
-                    </form>
+                        <form id="submit-form">
+                            <input type="hidden" name="Produk" value="{{ $product['name'] }}" required>
+                            <input type="hidden" id="kota" name="Kota" value="{{ $city }}" required>
+                            <input type="hidden" name="Harga" value="{{ $product['price'] }}" required>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                                <input type="text" id="name" name="Nama" class="form-input mt-1 block w-full"
+                                    placeholder="name">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                <input type="email" id="email" name="Email" class="form-input mt-1 block w-full"
+                                    placeholder="email">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                                <textarea id="message" name="Message" rows="4" class="form-textarea mt-1 block w-full" placeholder="message"></textarea>
+                            </div>
+
+                            <button id="submit-button" type="submit"
+                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Submit
+                            </button>
+                        </form>
                 </div>
             </div>
         </div>
