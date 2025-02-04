@@ -26,18 +26,28 @@ class PelangganController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    function store(Request $request)
     {
-        // dd($request->all());
+        // Validate the incoming data
+        $request->validate([
+            'Nama' => 'required',
+            'Email' => 'required',
+        ],[
+            'Nama.required' => 'Name wajib diisi',
+            'Email.required' => 'Email wajib diisi',
+        ]);
+    
+        // If validation passes, create the new Pelanggan record
         Pelanggan::create([
             'Nama' => $request->Nama,
             'Email' => $request->Email,
             'Message' => $request->Message,
         ]);
-
+    
+        // Redirect with success message if the data is stored successfully
         return redirect('malang')->with('success', 'Data Tersimpan');
-
     }
+    
 
     /**
      * Display the specified resource.

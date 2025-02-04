@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="senjani kitchen makanan penuh gizi">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -17,18 +18,18 @@
     <div class="w-50 max-w-sm bg-white rounded-lg shadow-lg p-6">
         <h1 class="text-2xl font-semibold text-center mb-6">Login</h1>
         @if ($errors->any())
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                Swal.fire({
-                    title: 'Ada kesalahan!',
-                    html: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: 'Ada kesalahan!',
+                        html: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
                 });
-            });
-        </script>
-    @endif
-    
+            </script>
+        @endif
+
 
         <form action="/index/login" method="POST" class="space-y-4">
             @csrf
@@ -47,7 +48,8 @@
                     class="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
                     Login
                 </button>
-                <p>Belum ada Akun? <a href="/index/register" class="text-indigo-600 hover:text-indigo-700 font-bold">Register</a></p>
+                <p>Belum ada Akun? <a href="/index/register"
+                        class="text-indigo-600 hover:text-indigo-700 font-bold">Register</a></p>
             </div>
         </form>
     </div>
